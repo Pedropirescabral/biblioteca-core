@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca — Membros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="marca">Biblioteca<span>Municipal</span></div>
+  <nav>
+    <a href="index.html">Painel</a>
+    <a href="livros.html">Livros</a>
+    <a href="membros.html" class="ativo">Membros</a>
+    <a href="emprestimos.html">Empréstimos</a>
+  </nav>
+</header>
+
+<main>
+  <div class="cabecalho-pagina">
+    <div>
+      <h1>Membros</h1>
+      <p>Cadastre leitores e consulte a base de membros da biblioteca.</p>
+    </div>
+  </div>
+
+  <section class="painel">
+    <h2>Novo membro</h2>
+    <div class="mensagem sucesso" id="msg-sucesso" hidden></div>
+    <form id="form-membro" novalidate>
+      <div class="form-grid">
+        <div>
+          <label for="nome">Nome completo *</label>
+          <input type="text" id="nome" name="nome" required minlength="3">
+          <div class="erro-campo" id="erro-nome"></div>
+        </div>
+        <div>
+          <label for="email">E-mail *</label>
+          <input type="email" id="email" name="email" required>
+          <div class="erro-campo" id="erro-email"></div>
+        </div>
+        <div>
+          <label for="matricula">Matrícula *</label>
+          <input type="text" id="matricula" name="matricula" required placeholder="ex.: M004">
+          <div class="erro-campo" id="erro-matricula"></div>
+        </div>
+      </div>
+      <button type="submit" class="btn" style="margin-top:.5rem;">Cadastrar membro</button>
+    </form>
+  </section>
+
+  <section class="painel">
+    <h2>Membros cadastrados</h2>
+    <table>
+      <thead>
+        <tr><th>Nome</th><th>E-mail</th><th>Matrícula</th><th>Empréstimos ativos</th></tr>
+      </thead>
+      <tbody id="tabela-membros"></tbody>
+    </table>
+  </section>
+</main>
+
+<footer>Projeto Integrador — Sistema de Biblioteca (front-end estático, Etapa 8)</footer>
+
+<script src="js/dados.js"></script>
+<script src="js/validacao.js"></script>
+<script src="js/membros.js"></script>
+</body>
+</html>

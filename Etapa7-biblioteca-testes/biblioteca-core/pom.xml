@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>br.com.biblioteca</groupId>
+    <artifactId>biblioteca-projeto-integrador</artifactId>
+    <version>1.0.0</version>
+  </parent>
+
+  <artifactId>biblioteca-core</artifactId>
+  <packaging>jar</packaging>
+
+  <name>biblioteca-core</name>
+  <description>
+    Projeto Integrador - Etapa 6: núcleo de regras de negócio do sistema de
+    biblioteca, refatorado a partir do sistema desktop, aplicando princípios
+    SOLID e separando responsabilidades (model / service / repository).
+  </description>
+
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>br.com.biblioteca.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca — Painel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="marca">Biblioteca<span>Municipal</span></div>
+  <nav>
+    <a href="index.html" class="ativo">Painel</a>
+    <a href="livros.html">Livros</a>
+    <a href="membros.html">Membros</a>
+    <a href="emprestimos.html">Empréstimos</a>
+  </nav>
+</header>
+
+<main>
+  <div class="cabecalho-pagina">
+    <div>
+      <h1>Painel geral</h1>
+      <p>Visão rápida do acervo e da atividade de empréstimos.</p>
+    </div>
+  </div>
+
+  <section class="grade-cards" id="cards-resumo" aria-live="polite">
+    <div class="card">
+      <span class="numero" id="total-livros">—</span>
+      <span class="rotulo">Títulos cadastrados</span>
+    </div>
+    <div class="card">
+      <span class="numero" id="total-disponiveis">—</span>
+      <span class="rotulo">Exemplares disponíveis</span>
+    </div>
+    <div class="card">
+      <span class="numero" id="total-membros">—</span>
+      <span class="rotulo">Membros ativos</span>
+    </div>
+    <div class="card">
+      <span class="numero" id="total-emprestimos">—</span>
+      <span class="rotulo">Empréstimos em aberto</span>
+    </div>
+  </section>
+
+  <section class="painel">
+    <h2>Empréstimos recentes</h2>
+    <table>
+      <thead>
+        <tr><th>Livro</th><th>Membro</th><th>Previsão de devolução</th><th>Status</th></tr>
+      </thead>
+      <tbody id="tabela-recentes">
+        <!-- preenchido via JS -->
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<footer>Projeto Integrador — Sistema de Biblioteca (front-end estático, Etapa 8)</footer>
+
+<script src="js/dados.js"></script>
+<script src="js/painel.js"></script>
+</body>
+</html>

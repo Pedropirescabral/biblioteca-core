@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" font-family="sans-serif">
+<rect width="800" height="560" fill="#ffffff" stroke="#999"/>
+<rect x="0" y="0" width="800" height="50" fill="#e0e0e0" stroke="#999"/>
+<text x="20" y="30" font-size="14">[ LOGO ]</text>
+<text x="600" y="30" font-size="12">Painel | Livros | Membros | Empréstimos</text>
+
+<text x="20" y="80" font-size="18" font-weight="bold">Acervo de livros</text>
+
+<rect x="20" y="100" width="760" height="150" fill="#fafafa" stroke="#999"/>
+<text x="35" y="125" font-size="14" font-weight="bold">Formulário: novo livro</text>
+<rect x="35" y="140" width="160" height="30" fill="#fff" stroke="#999"/><text x="45" y="160" font-size="10">Título</text>
+<rect x="210" y="140" width="160" height="30" fill="#fff" stroke="#999"/><text x="220" y="160" font-size="10">Autor</text>
+<rect x="385" y="140" width="160" height="30" fill="#fff" stroke="#999"/><text x="395" y="160" font-size="10">ISBN</text>
+<rect x="560" y="140" width="120" height="30" fill="#fff" stroke="#999"/><text x="570" y="160" font-size="10">Qtd.</text>
+<rect x="35" y="190" width="150" height="30" fill="#ccc" stroke="#999"/><text x="55" y="210" font-size="11">[Cadastrar]</text>
+
+<rect x="20" y="270" width="760" height="270" fill="#fafafa" stroke="#999"/>
+<text x="35" y="295" font-size="14" font-weight="bold">Livros cadastrados (tabela)</text>
+<line x1="20" y1="310" x2="780" y2="310" stroke="#ccc"/>
+<line x1="20" y1="345" x2="780" y2="345" stroke="#ccc"/>
+<line x1="20" y1="380" x2="780" y2="380" stroke="#ccc"/>
+<line x1="20" y1="415" x2="780" y2="415" stroke="#ccc"/>
+</svg>

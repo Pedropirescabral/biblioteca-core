@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca — Empréstimos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="marca">Biblioteca<span>Municipal</span></div>
+  <nav>
+    <a href="index.html">Painel</a>
+    <a href="livros.html">Livros</a>
+    <a href="membros.html">Membros</a>
+    <a href="emprestimos.html" class="ativo">Empréstimos</a>
+  </nav>
+</header>
+
+<main>
+  <div class="cabecalho-pagina">
+    <div>
+      <h1>Empréstimos</h1>
+      <p>Registre novos empréstimos e devoluções. Multa calculada automaticamente em caso de atraso.</p>
+    </div>
+  </div>
+
+  <section class="painel">
+    <h2>Novo empréstimo</h2>
+    <div class="mensagem sucesso" id="msg-sucesso" hidden></div>
+    <div class="mensagem alerta" id="msg-erro" hidden></div>
+    <form id="form-emprestimo" novalidate>
+      <div class="form-grid">
+        <div>
+          <label for="livro">Livro disponível *</label>
+          <select id="livro" name="livro" required></select>
+          <div class="erro-campo" id="erro-livro"></div>
+        </div>
+        <div>
+          <label for="membro">Membro *</label>
+          <select id="membro" name="membro" required></select>
+          <div class="erro-campo" id="erro-membro"></div>
+        </div>
+        <div>
+          <label for="data-emprestimo">Data do empréstimo *</label>
+          <input type="date" id="data-emprestimo" name="data-emprestimo" required>
+          <div class="erro-campo" id="erro-data"></div>
+        </div>
+      </div>
+      <button type="submit" class="btn" style="margin-top:.5rem;">Registrar empréstimo</button>
+    </form>
+  </section>
+
+  <section class="painel">
+    <h2>Empréstimos ativos</h2>
+    <table>
+      <thead>
+        <tr><th>Livro</th><th>Membro</th><th>Empréstimo</th><th>Previsão</th><th>Status</th><th>Ação</th></tr>
+      </thead>
+      <tbody id="tabela-emprestimos"></tbody>
+    </table>
+  </section>
+</main>
+
+<footer>Projeto Integrador — Sistema de Biblioteca (front-end estático, Etapa 8)</footer>
+
+<script src="js/dados.js"></script>
+<script src="js/validacao.js"></script>
+<script src="js/emprestimos.js"></script>
+</body>
+</html>

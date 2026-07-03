@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 580" font-family="sans-serif">
+<rect width="800" height="580" fill="#ffffff" stroke="#999"/>
+<rect x="0" y="0" width="800" height="50" fill="#e0e0e0" stroke="#999"/>
+<text x="20" y="30" font-size="14">[ LOGO ]</text>
+<text x="600" y="30" font-size="12">Painel | Livros | Membros | Empréstimos</text>
+
+<text x="20" y="80" font-size="18" font-weight="bold">Empréstimos</text>
+
+<rect x="20" y="100" width="760" height="150" fill="#fafafa" stroke="#999"/>
+<text x="35" y="125" font-size="14" font-weight="bold">Formulário: novo empréstimo</text>
+<rect x="35" y="140" width="220" height="30" fill="#fff" stroke="#999"/><text x="45" y="160" font-size="10">Livro (select)</text>
+<rect x="270" y="140" width="220" height="30" fill="#fff" stroke="#999"/><text x="280" y="160" font-size="10">Membro (select)</text>
+<rect x="505" y="140" width="160" height="30" fill="#fff" stroke="#999"/><text x="515" y="160" font-size="10">Data</text>
+<rect x="35" y="190" width="180" height="30" fill="#ccc" stroke="#999"/><text x="45" y="210" font-size="11">[Registrar empréstimo]</text>
+
+<rect x="20" y="270" width="760" height="290" fill="#fafafa" stroke="#999"/>
+<text x="35" y="295" font-size="14" font-weight="bold">Empréstimos ativos (tabela + ação de devolução)</text>
+<line x1="20" y1="310" x2="780" y2="310" stroke="#ccc"/>
+<rect x="670" y="318" width="90" height="22" fill="#ddd" stroke="#999"/><text x="675" y="333" font-size="9">[Devolver]</text>
+<line x1="20" y1="345" x2="780" y2="345" stroke="#ccc"/>
+<rect x="670" y="353" width="90" height="22" fill="#ddd" stroke="#999"/><text x="675" y="368" font-size="9">[Devolver]</text>
+</svg>

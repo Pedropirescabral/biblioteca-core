@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header class="topo" th:fragment="cabecalho(pagina)">
+  <div class="marca">Biblioteca<span>Municipal</span></div>
+  <nav>
+    <a href="/" th:classappend="${pagina == 'painel'} ? 'ativo'">Painel</a>
+    <a href="/livros" th:classappend="${pagina == 'livros'} ? 'ativo'">Livros</a>
+    <a href="/membros" th:classappend="${pagina == 'membros'} ? 'ativo'">Membros</a>
+    <a href="/emprestimos" th:classappend="${pagina == 'emprestimos'} ? 'ativo'">Empréstimos</a>
+  </nav>
+</header>
+</body>
+</html>

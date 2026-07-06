@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca — Livros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/cabecalho :: cabecalho('livros')}"></div>
+
+<main>
+  <div class="cabecalho-pagina">
+    <div>
+      <h1>Acervo de livros</h1>
+      <p>Cadastre novos títulos e acompanhe a disponibilidade de exemplares.</p>
+    </div>
+  </div>
+
+  <section class="painel">
+    <h2>Novo livro</h2>
+    <div class="mensagem sucesso" th:if="${mensagemSucesso}" th:text="${mensagemSucesso}"></div>
+    <div class="mensagem alerta" th:if="${mensagemErro}" th:text="${mensagemErro}"></div>
+
+    <form th:action="@{/livros}" method="post">
+      <div class="form-grid">
+        <div>
+          <label for="titulo">Título *</label>
+          <input type="text" id="titulo" name="titulo" required minlength="2">
+        </div>
+        <div>
+          <label for="autor">Autor *</label>
+          <input type="text" id="autor" name="autor" required minlength="2">
+        </div>
+        <div>
+          <label for="isbn">ISBN</label>
+          <input type="text" id="isbn" name="isbn" placeholder="978-0000000000">
+        </div>
+        <div>
+          <label for="quantidade">Quantidade de exemplares *</label>
+          <input type="number" id="quantidade" name="quantidade" min="1" step="1" required value="1">
+        </div>
+      </div>
+      <button type="submit" class="btn" style="margin-top:.5rem;">Cadastrar livro</button>
+    </form>
+  </section>
+
+  <section class="painel">
+    <h2>Livros cadastrados</h2>
+    <table>
+      <thead><tr><th>Título</th><th>Autor</th><th>ISBN</th><th>Exemplares</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr th:if="${#lists.isEmpty(livros)}"><td colspan="5">Nenhum livro cadastrado.</td></tr>
+        <tr th:each="l : ${livros}">
+          <td th:text="${l.titulo}">-</td>
+          <td th:text="${l.autor}">-</td>
+          <td th:text="${l.isbn}">-</td>
+          <td th:text="${l.quantidadeDisponivel} + '/' + ${l.quantidadeTotal}">-</td>
+          <td>
+            <span class="selo" th:classappend="${l.disponivel} ? 'disponivel' : 'indisponivel'"
+                  th:text="${l.disponivel} ? 'Disponível' : 'Indisponível'">Status</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<footer>Projeto Integrador — Sistema de Biblioteca (Spring MVC + JDBC, Etapa 9)</footer>
+</body>
+</html>

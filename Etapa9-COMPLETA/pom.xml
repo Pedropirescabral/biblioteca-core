@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>br.com.biblioteca</groupId>
+  <artifactId>biblioteca-projeto-integrador</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+
+  <name>Biblioteca - Projeto Integrador</name>
+  <description>
+    Projeto Integrador (PI) - Sistema de Gerenciamento de Biblioteca.
+    Módulos: biblioteca-core (regras de negócio, Etapa 6), biblioteca-testes
+    (testes JUnit, Etapa 7) e biblioteca-web (aplicação Spring Web, Etapa 9).
+    O módulo biblioteca-frontend (Etapa 8) é um projeto estático HTML/CSS/JS
+    e não participa do build Maven.
+  </description>
+
+  <modules>
+    <module>biblioteca-core</module>
+    <module>biblioteca-testes</module>
+    <module>biblioteca-web</module>
+  </modules>
+
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+</project>

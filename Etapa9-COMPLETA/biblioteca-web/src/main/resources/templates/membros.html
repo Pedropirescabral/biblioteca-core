@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca — Membros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/cabecalho :: cabecalho('membros')}"></div>
+
+<main>
+  <div class="cabecalho-pagina">
+    <div>
+      <h1>Membros</h1>
+      <p>Cadastre leitores e consulte a base de membros da biblioteca.</p>
+    </div>
+  </div>
+
+  <section class="painel">
+    <h2>Novo membro</h2>
+    <div class="mensagem sucesso" th:if="${mensagemSucesso}" th:text="${mensagemSucesso}"></div>
+    <div class="mensagem alerta" th:if="${mensagemErro}" th:text="${mensagemErro}"></div>
+
+    <form th:action="@{/membros}" method="post">
+      <div class="form-grid">
+        <div>
+          <label for="nome">Nome completo *</label>
+          <input type="text" id="nome" name="nome" required minlength="3">
+        </div>
+        <div>
+          <label for="email">E-mail *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="matricula">Matrícula *</label>
+          <input type="text" id="matricula" name="matricula" required placeholder="ex.: M004">
+        </div>
+      </div>
+      <button type="submit" class="btn" style="margin-top:.5rem;">Cadastrar membro</button>
+    </form>
+  </section>
+
+  <section class="painel">
+    <h2>Membros cadastrados</h2>
+    <table>
+      <thead><tr><th>Nome</th><th>E-mail</th><th>Matrícula</th><th>Empréstimos ativos</th></tr></thead>
+      <tbody>
+        <tr th:if="${#lists.isEmpty(membros)}"><td colspan="4">Nenhum membro cadastrado.</td></tr>
+        <tr th:each="m : ${membros}">
+          <td th:text="${m.nome}">-</td>
+          <td th:text="${m.email}">-</td>
+          <td th:text="${m.matricula}">-</td>
+          <td th:text="${ativosPorMembro.get(m.id)}">0</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<footer>Projeto Integrador — Sistema de Biblioteca (Spring MVC + JDBC, Etapa 9)</footer>
+</body>
+</html>

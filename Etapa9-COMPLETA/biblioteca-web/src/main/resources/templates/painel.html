@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca — Painel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/cabecalho :: cabecalho('painel')}"></div>
+
+<main>
+  <div class="cabecalho-pagina">
+    <div>
+      <h1>Painel geral</h1>
+      <p>Visão rápida do acervo e da atividade de empréstimos (dados reais do banco H2).</p>
+    </div>
+  </div>
+
+  <section class="grade-cards">
+    <div class="card">
+      <span class="numero" th:text="${totalLivros}">0</span>
+      <span class="rotulo">Títulos cadastrados</span>
+    </div>
+    <div class="card">
+      <span class="numero" th:text="${totalDisponiveis}">0</span>
+      <span class="rotulo">Exemplares disponíveis</span>
+    </div>
+    <div class="card">
+      <span class="numero" th:text="${totalMembros}">0</span>
+      <span class="rotulo">Membros ativos</span>
+    </div>
+    <div class="card">
+      <span class="numero" th:text="${totalAtivos}">0</span>
+      <span class="rotulo">Empréstimos em aberto</span>
+    </div>
+  </section>
+
+  <section class="painel">
+    <h2>Empréstimos recentes</h2>
+    <table>
+      <thead><tr><th>Livro</th><th>Membro</th><th>Previsão</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr th:if="${#lists.isEmpty(recentes)}"><td colspan="4">Nenhum empréstimo registrado ainda.</td></tr>
+        <tr th:each="emp : ${recentes}">
+          <td th:text="${emp.livro.titulo}">-</td>
+          <td th:text="${emp.membro.nome}">-</td>
+          <td th:text="${emp.dataPrevistaDevolucao}">-</td>
+          <td>
+            <span class="selo" th:classappend="${emp.status.name() == 'ATIVO'} ? 'ativo' : 'devolvido'"
+                  th:text="${emp.status.name() == 'ATIVO'} ? 'Ativo' : 'Devolvido'">Status</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<footer>Projeto Integrador — Sistema de Biblioteca (Spring MVC + JDBC, Etapa 9)</footer>
+</body>
+</html>

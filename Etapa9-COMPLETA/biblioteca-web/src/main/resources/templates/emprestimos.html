@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblioteca — Empréstimos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/cabecalho :: cabecalho('emprestimos')}"></div>
+
+<main>
+  <div class="cabecalho-pagina">
+    <div>
+      <h1>Empréstimos</h1>
+      <p>Registre novos empréstimos e devoluções. Multa calculada automaticamente em caso de atraso.</p>
+    </div>
+  </div>
+
+  <section class="painel">
+    <h2>Novo empréstimo</h2>
+    <div class="mensagem sucesso" th:if="${mensagemSucesso}" th:text="${mensagemSucesso}"></div>
+    <div class="mensagem alerta" th:if="${mensagemErro}" th:text="${mensagemErro}"></div>
+
+    <form th:action="@{/emprestimos}" method="post">
+      <div class="form-grid">
+        <div>
+          <label for="livroId">Livro disponível *</label>
+          <select id="livroId" name="livroId" required>
+            <option th:if="${#lists.isEmpty(livrosDisponiveis)}" value="">Nenhum livro disponível</option>
+            <option th:each="l : ${livrosDisponiveis}" th:value="${l.id}"
+                    th:text="${l.titulo} + ' (' + ${l.quantidadeDisponivel} + ' disp.)'"></option>
+          </select>
+        </div>
+        <div>
+          <label for="membroId">Membro *</label>
+          <select id="membroId" name="membroId" required>
+            <option th:each="m : ${membros}" th:value="${m.id}" th:text="${m.nome} + ' — ' + ${m.matricula}"></option>
+          </select>
+        </div>
+        <div>
+          <label for="dataEmprestimo">Data do empréstimo *</label>
+          <input type="date" id="dataEmprestimo" name="dataEmprestimo" required th:value="${hoje}">
+        </div>
+      </div>
+      <button type="submit" class="btn" style="margin-top:.5rem;">Registrar empréstimo</button>
+    </form>
+  </section>
+
+  <section class="painel">
+    <h2>Empréstimos</h2>
+    <table>
+      <thead><tr><th>Livro</th><th>Membro</th><th>Empréstimo</th><th>Previsão</th><th>Status</th><th>Ação</th></tr></thead>
+      <tbody>
+        <tr th:if="${#lists.isEmpty(emprestimos)}"><td colspan="6">Nenhum empréstimo registrado.</td></tr>
+        <tr th:each="emp : ${emprestimos}">
+          <td th:text="${emp.livro.titulo}">-</td>
+          <td th:text="${emp.membro.nome}">-</td>
+          <td th:text="${emp.dataEmprestimo}">-</td>
+          <td th:text="${emp.dataPrevistaDevolucao}">-</td>
+          <td>
+            <span class="selo" th:classappend="${emp.status.name() == 'ATIVO'} ? 'ativo' : 'devolvido'"
+                  th:text="${emp.status.name() == 'ATIVO'} ? 'Ativo' : 'Devolvido'">Status</span>
+          </td>
+          <td>
+            <form th:if="${emp.status.name() == 'ATIVO'}" th:action="@{/emprestimos/{id}/devolucao(id=${emp.id})}" method="post" style="display:inline;">
+              <button type="submit" class="btn secundario">Registrar devolução</button>
+            </form>
+            <span th:unless="${emp.status.name() == 'ATIVO'}">—</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<footer>Projeto Integrador — Sistema de Biblioteca (Spring MVC + JDBC, Etapa 9)</footer>
+</body>
+</html>
